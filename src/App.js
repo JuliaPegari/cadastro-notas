@@ -21,11 +21,17 @@ class App extends Component {
     }
     this.setState(novoEstado) //Faz com o que os cardes apareçam dinamicamente na tela
   }
+
+  deletarNota(index){
+    let arrayNotas  = this.state.notas //Pegando o array com as notas
+    arrayNotas.splice(index,1) //Deletar a nota
+    this.setState({notas:arrayNotas})
+  }
   render() {
     return (
       <section className="conteudo">
         <FormularioCadastro criarNota={this.criarNota.bind(this)}/>
-        <ListaDeNotas notas={this.state.notas}/>
+        <ListaDeNotas deletarNota = {this.deletarNota.bind(this)} notas={this.state.notas}/>
       </section>
     );
   }
